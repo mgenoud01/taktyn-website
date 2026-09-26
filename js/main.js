@@ -108,6 +108,46 @@ document.addEventListener('DOMContentLoaded', () => {
     revealTargets.forEach((el) => io.observe(el));
   }
 
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    const isFr = document.documentElement.lang === 'fr';
+    const statusEl = document.getElementById('contact-status');
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalLabel = submitBtn.textContent;
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = isFr ? 'Envoi...' : 'Sending...';
+      statusEl.textContent = '';
+      statusEl.className = 'form-status';
+
+      try {
+        const res = await fetch(contactForm.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(contactForm),
+        });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.message || 'submit failed');
+
+        contactForm.reset();
+        statusEl.textContent = isFr
+          ? 'Message envoyé — réponse sous quelques jours.'
+          : 'Message sent — reply within a few days.';
+        statusEl.classList.add('form-status-ok');
+      } catch (err) {
+        statusEl.textContent = isFr
+          ? "Échec de l'envoi — réessayez ou écrivez à itgenl@proton.me."
+          : 'Failed to send — please retry or email itgenl@proton.me.';
+        statusEl.classList.add('form-status-error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
+    });
+  }
+
   const shots = document.querySelectorAll('.gallery-shot img');
   if (shots.length) {
     const overlay = document.createElement('div');

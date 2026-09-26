@@ -455,7 +455,9 @@
       <div class="sec-num">SEC.09 // CONTACT</div>
       <h2 class="section-title">Let's talk about your field</h2>
       <p class="section-sub">Describe your activity and your coordination needs — reply within a few days.</p>
-      <form class="contact-form" id="contact-form" action="mailto:mgenoud01@gmail.com" method="POST" enctype="text/plain">
+      <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="0ca66096-8fc4-4082-b37a-006df86c2593">
+        <input type="hidden" name="subject" value="New demo request — TAKTYN">
         <div class="form-row">
           <label for="c-name">Name</label>
           <input id="c-name" name="Name" type="text" required>
@@ -473,6 +475,7 @@
           <textarea id="c-msg" name="Message" rows="4" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Send request</button>
+        <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
         <p class="form-legal">By submitting this form, you agree to our <a href="privacy.html">privacy policy</a>.</p>
       </form>
     </div>
