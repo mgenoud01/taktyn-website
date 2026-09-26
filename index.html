@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script>(function(){var t=localStorage.getItem('taktyn-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAKTYN — Coordination terrain temps réel</title>
+<meta name="description" content="TAKTYN est un système de commandement et coordination tactique pour équipes de sécurité et d'intervention : carte temps réel, chat chiffré, radio hors réseau. Hébergé en Suisse.">
+<meta name="theme-color" content="#121212">
+<link rel="icon" type="image/svg+xml" href="assets/taktyn_logo.svg">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="scanline-overlay" aria-hidden="true"></div>
+
+<!-- ═══════ HEADER ═══════ -->
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <img src="assets/taktyn_logo.svg" alt="" class="brand-mark">
+      <span class="brand-name">TAKTYN</span>
+    </a>
+    <div class="header-status">
+      <span class="status-dot"></span>BÊTA OUVERTE
+      <span class="header-clock" id="header-clock">--:--:--</span>
+    </div>
+    <nav class="main-nav" id="main-nav">
+      <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#captures">Aperçu</a>
+      <a href="#securite">Sécurité</a>
+      <a href="#secteurs">Secteurs</a>
+      <a href="#tarifs">Accès bêta</a>
+      <a href="#contact" class="nav-cta">Demander une démo</a>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Basculer le thème clair / sombre">☀</button>
+      <a href="en/index.html" class="lang-switch" lang="en" hreflang="en">EN</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <img src="assets/taktyn_logo.svg" alt="" class="hero-watermark" aria-hidden="true">
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <div class="eyebrow"><span class="dot"></span>PROGRAMME BÊTA — PLACES LIMITÉES</div>
+        <h1>Coordination terrain,<br>en temps réel<span class="accent">.</span></h1>
+        <p class="hero-sub">
+          Carte tactique partagée, chat chiffré de bout en bout, radio hors réseau.
+          TAKTYN réunit vos outils de coordination en une seule plateforme —
+          et continue de fonctionner même sans internet.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Demander une démo gratuite</a>
+          <a href="#fonctionnalites" class="btn btn-ghost">Voir les fonctionnalités</a>
+        </div>
+        <div class="grid-ref">GRID 46.2044°N 6.1432°E <span>·</span> NODE CH-GVA <span>·</span> SEC AES-256</div>
+      </div>
+      <div class="terminal hud-frame" aria-hidden="true">
+        <span class="hud-corner hud-tl"></span><span class="hud-corner hud-tr"></span>
+        <span class="hud-corner hud-bl"></span><span class="hud-corner hud-br"></span>
+        <div class="terminal-bar">
+          <span class="t-dot t-red"></span><span class="t-dot t-yellow"></span><span class="t-dot t-green"></span>
+          <span class="terminal-path">operateur@taktyn:~</span>
+        </div>
+        <div class="terminal-body" id="terminal-body"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ TICKER ═══════ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>COORDINATION TEMPS RÉEL</span><span class="ticker-sep">◆</span>
+      <span>CHIFFREMENT AES-256</span><span class="ticker-sep">◆</span>
+      <span>RADIO HORS RÉSEAU</span><span class="ticker-sep">◆</span>
+      <span>HÉBERGEMENT SUISSE</span><span class="ticker-sep">◆</span>
+      <span>BASCULE AUTOMATIQUE &lt; 30S</span><span class="ticker-sep">◆</span>
+      <span>ISOLATION PAR CLIENT</span><span class="ticker-sep">◆</span>
+      <span>COORDINATION TEMPS RÉEL</span><span class="ticker-sep">◆</span>
+      <span>CHIFFREMENT AES-256</span><span class="ticker-sep">◆</span>
+      <span>RADIO HORS RÉSEAU</span><span class="ticker-sep">◆</span>
+      <span>HÉBERGEMENT SUISSE</span><span class="ticker-sep">◆</span>
+      <span>BASCULE AUTOMATIQUE &lt; 30S</span><span class="ticker-sep">◆</span>
+      <span>ISOLATION PAR CLIENT</span><span class="ticker-sep">◆</span>
+    </div>
+  </div>
+
+  <!-- ═══════ STATS ═══════ -->
+  <section class="stats-bar">
+    <div class="wrap stats-grid">
+      <div class="stat"><span class="stat-num">7</span><span class="stat-lbl">couches de chiffrement</span></div>
+      <div class="stat"><span class="stat-num">&lt;30s</span><span class="stat-lbl">bascule en mode dégradé</span></div>
+      <div class="stat"><span class="stat-num">868</span><span class="stat-lbl">MHz — radio LoRa hors réseau</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-lbl">infrastructure en Suisse</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════ PROBLEM ═══════ -->
+  <section class="problem">
+    <div class="wrap">
+      <div class="sec-num">SEC.01 // CONSTAT</div>
+      <h2 class="section-title">La coordination terrain reste éclatée</h2>
+      <div class="compare">
+        <div class="compare-col compare-before">
+          <div class="compare-head">AUJOURD'HUI</div>
+          <ul>
+            <li>Radio classique — pas de carte, pas de traçabilité</li>
+            <li>Messagerie grand public — non chiffrée, non professionnelle</li>
+            <li>Excel / papier — aucune vue temps réel du terrain</li>
+            <li>Zone sans réseau — perte totale de coordination</li>
+            <li>Statut des équipes suivi à la voix — pas de vue d'ensemble</li>
+            <li>Un seul poste de commandement — point de défaillance unique</li>
+          </ul>
+        </div>
+        <div class="compare-arrow">→</div>
+        <div class="compare-col compare-after">
+          <div class="compare-head">AVEC TAKTYN</div>
+          <ul>
+            <li>Carte tactique partagée en temps réel</li>
+            <li>Chat chiffré de bout en bout, pensé pour le pro</li>
+            <li>Positions et zones synchronisées automatiquement</li>
+            <li>Radio LoRa de secours — aucune coupure de coordination</li>
+            <li>Statut de chaque point mis à jour en un clic, visible par tous</li>
+            <li>Plusieurs postes synchronisés — bascule automatique en cas de panne</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FEATURES ═══════ -->
+  <section class="features" id="fonctionnalites">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="sec-num">SEC.02 // FONCTIONNALITÉS</div>
+        <h2 class="section-title">Un poste de commandement, partout</h2>
+        <p class="section-sub">Desktop, tablette ou navigateur — la même carte, en temps réel, pour toute l'équipe.</p>
+      </div>
+      <div class="features-grid">
+        <article class="feature-card feature-card--hero">
+          <div class="f-icon">MAP</div>
+          <h3>Carte tactique temps réel</h3>
+          <p>Marqueurs, zones et positions GPS partagés instantanément entre tous les opérateurs connectés — la même image tactique, pour tout le monde, à la seconde près.</p>
+        </article>
+        <article class="feature-card">
+          <div class="f-icon">E2E</div>
+          <h3>Chat chiffré de bout en bout</h3>
+          <p>Messages chiffrés AES-256-GCM côté client. Ni le serveur ni un tiers ne peut les lire.</p>
+        </article>
+        <article class="feature-card">
+          <div class="f-icon">RF</div>
+          <h3>Radio hors réseau</h3>
+          <p>Communication LoRa Meshtastic 868 MHz — la coordination continue même sans 4G ni internet.</p>
+        </article>
+        <article class="feature-card">
+          <div class="f-icon">FBK</div>
+          <h3>Mode dégradé automatique</h3>
+          <p>Coupure réseau détectée en 30 secondes. Bascule automatique vers la radio et le cache local.</p>
+        </article>
+        <article class="feature-card">
+          <div class="f-icon">SOS</div>
+          <h3>Alerte MAYDAY</h3>
+          <p>Un bouton pour déclencher une alerte prioritaire visible immédiatement par toute l'équipe.</p>
+        </article>
+        <article class="feature-card">
+          <div class="f-icon">OS</div>
+          <h3>Multi-plateforme</h3>
+          <p>Desktop (Mac / Windows / Linux) et client web optimisé pour smartphone et tablette Android, ou navigateur.</p>
+        </article>
+        <article class="feature-card">
+          <div class="f-icon">STA</div>
+          <h3>Statut en direct</h3>
+          <p>Chaque point (libre, actif, danger, sécurisé, évacué, bloqué) se met à jour en un clic.</p>
+        </article>
+        <article class="feature-card">
+          <div class="f-icon">VOX</div>
+          <h3>Messages vocaux chiffrés</h3>
+          <p>Envoyez un message vocal directement dans le chat, chiffré comme le reste — disponible en 4G/5G. Le texte, lui, continue de passer même via la radio hors réseau.</p>
+        </article>
+        <article class="feature-card feature-card--third">
+          <div class="f-icon">LOG</div>
+          <h3>Suivi logistique</h3>
+          <p>Chaque unité suit son inventaire — véhicules, personnel, matériel — avec seuil d'alerte automatique. Vue consolidée pour le poste de commandement, et gestion des demandes de ravitaillement.</p>
+        </article>
+        <article class="feature-card feature-card--third">
+          <div class="f-icon">LYR</div>
+          <h3>Calques de planification</h3>
+          <p>Préparez un plan sur un calque séparé — marqueurs, zones — sans toucher à l'opération en cours. Déléguez-le à un subordonné pour qu'il prépare sa partie, puis activez-le pour l'intégrer en direct.</p>
+        </article>
+        <article class="feature-card feature-card--wide">
+          <div class="f-icon">ISO</div>
+          <div class="fc-wide-text">
+            <h3>Isolation par opération &amp; continuité multi-postes</h3>
+            <p>Chaque mission — et chaque client — a son propre espace, jamais partagé. Plusieurs postes de commandement se synchronisent en continu ; si l'un tombe, les appareils basculent automatiquement sur un autre en moins de 30 secondes, sans perte de données.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ GALLERY ═══════ -->
+  <section class="gallery" id="captures">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="sec-num">SEC.03 // APERÇU</div>
+        <h2 class="section-title">L'application en conditions réelles</h2>
+        <p class="section-sub">Captures de l'interface — poste de commandement, carte tactique, chat opérateur.</p>
+      </div>
+      <div class="gallery-grid gallery-grid--shots">
+        <figure class="gallery-shot gallery-shot--video">
+          <video controls preload="metadata" poster="assets/demo-poster.jpg" playsinline>
+            <source src="assets/demo.mp4" type="video/mp4">
+            Votre navigateur ne prend pas en charge la lecture vidéo.
+          </video>
+          <figcaption class="gallery-shot-cap">DÉMO — 2 minutes, coordination en conditions réelles</figcaption>
+        </figure>
+        <figure class="gallery-shot gallery-shot--wide">
+          <img src="assets/screenshots/02-carte-tactique.png" alt="Carte tactique TAKTYN avec marqueurs, zone d'incident et bouton MAYDAY">
+          <figcaption class="gallery-shot-cap">CARTE TACTIQUE — marqueurs, zones, itinéraires en temps réel</figcaption>
+        </figure>
+        <figure class="gallery-shot">
+          <img src="assets/screenshots/05-chat.png" alt="Panneau de chat TAKTYN avec message broadcast et bouton urgent">
+          <figcaption class="gallery-shot-cap">CHAT — diffusion broadcast et messages urgents</figcaption>
+        </figure>
+        <figure class="gallery-shot">
+          <img src="assets/screenshots/03-marqueur-actions.png" alt="Fiche d'un marqueur avec actions Edit, Status, Photo, Tasks, History">
+          <figcaption class="gallery-shot-cap">SUIVI D'UN POINT — statut, tâches, photo, historique</figcaption>
+        </figure>
+        <figure class="gallery-shot">
+          <img src="assets/screenshots/04-statut-marqueur.png" alt="Sélecteur de statut d'un marqueur : clear, active, danger, secured, evacuated, blocked">
+          <figcaption class="gallery-shot-cap">STATUT EN DIRECT — mis à jour en un clic, visible par toute l'équipe</figcaption>
+        </figure>
+        <figure class="gallery-shot">
+          <img src="assets/screenshots/01-login.png" alt="Écran de connexion TAKTYN — Command &amp; Control System">
+          <figcaption class="gallery-shot-cap">CONNEXION — identifiant, mot de passe, station terrain</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SECURITY ═══════ -->
+  <section class="security" id="securite">
+    <div class="wrap security-inner">
+      <div class="security-text">
+        <div class="section-head">
+          <div class="sec-num">SEC.04 // SÉCURITÉ</div>
+          <h2 class="section-title">Sécurité par conception</h2>
+          <p class="section-sub">Sept couches de protection, de la radio au chiffrement des messages.</p>
+        </div>
+        <ul class="security-list">
+          <li><strong>Réseau</strong> — proxy/CDN, HTTPS TLS 1.3</li>
+          <li><strong>Authentification</strong> — mot de passe, session, verrouillage anti-bruteforce</li>
+          <li><strong>Transport</strong> — chiffrement AES-256 sur les liaisons temps réel</li>
+          <li><strong>Stockage</strong> — base de données chiffrée (SQLCipher AES-256)</li>
+          <li><strong>Radio</strong> — AES-256-CTR au niveau firmware Meshtastic</li>
+          <li><strong>Chat</strong> — chiffrement de bout en bout AES-256-GCM</li>
+          <li><strong>Infrastructure</strong> — un serveur et une base isolés par client, jamais partagés</li>
+        </ul>
+      </div>
+      <div class="security-card">
+        <div class="sc-badge">🇨🇭</div>
+        <h3>Données soumises au droit suisse</h3>
+        <p>Hébergement sur infrastructure Infomaniak, datacenters à Genève et Winterthour. Aucune donnée client ne transite hors de Suisse.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FIELD RACK ═══════ -->
+  <section class="field-rack">
+    <div class="wrap">
+      <div class="field-rack-card hud-frame">
+        <span class="hud-corner hud-tl"></span><span class="hud-corner hud-tr"></span>
+        <span class="hud-corner hud-bl"></span><span class="hud-corner hud-br"></span>
+        <div class="fr-icon">RCK</div>
+        <div class="fr-text">
+          <div class="sec-num">SEC.05 // TERRAIN</div>
+          <h2 class="section-title">Zéro réseau ? Toujours coordonné.</h2>
+          <p>Pour les opérations en zone isolée — montagne, grand événement, zone sinistrée — TAKTYN peut tourner depuis un boîtier compact déployé sur site, avec son propre réseau WiFi et son relais radio. Toute l'équipe reste coordonnée même en coupure totale, et tout se resynchronise automatiquement avec le cloud dès que la connexion revient.</p>
+        </div>
+        <div class="fr-badges">
+          <span>WiFi &amp; radio propres au site</span>
+          <span>Fonctionne sans internet</span>
+          <span>Resynchronisation automatique</span>
+        </div>
+      </div>
+
+      <figure class="field-diagram hud-frame">
+        <span class="hud-corner hud-tl"></span><span class="hud-corner hud-tr"></span>
+        <span class="hud-corner hud-bl"></span><span class="hud-corner hud-br"></span>
+        <svg viewBox="0 0 920 500" role="img" aria-label="Schéma : les appareils terrain se coordonnent par radio locale même sans internet ; les postes de commandement dans le cloud se synchronisent entre eux pour la redondance." font-family="var(--mono)" fill="var(--text-dim)">
+          <defs>
+            <marker id="tk-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--text-dim)"></path>
+            </marker>
+          </defs>
+
+          <!-- cloud tier group -->
+          <rect x="100" y="40" width="720" height="110" rx="10" fill="none" stroke="var(--border)" stroke-dasharray="4 4"></rect>
+          <text x="112" y="30" font-size="10.5" letter-spacing="1.5" fill="var(--text-dim)">CLOUD · SUISSE</text>
+
+          <rect x="150" y="68" width="200" height="64" rx="6" fill="var(--bg-panel)" stroke="var(--border)"></rect>
+          <g transform="translate(168,84)" stroke="var(--text-main)" stroke-width="1.1" fill="none">
+            <rect x="0" y="0" width="16" height="16" rx="2"></rect>
+            <line x1="3" y1="4" x2="13" y2="4"></line>
+            <line x1="3" y1="8" x2="13" y2="8"></line>
+            <line x1="3" y1="12" x2="9" y2="12"></line>
+          </g>
+          <text x="196" y="96" font-size="12" font-weight="700" fill="var(--text-main)">SERVEUR CLOUD</text>
+          <text x="196" y="112" font-size="10">PRINCIPAL</text>
+
+          <rect x="570" y="68" width="200" height="64" rx="6" fill="var(--bg-panel)" stroke="var(--border)"></rect>
+          <g transform="translate(588,84)" stroke="var(--text-main)" stroke-width="1.1" fill="none">
+            <rect x="0" y="0" width="16" height="16" rx="2"></rect>
+            <line x1="3" y1="4" x2="13" y2="4"></line>
+            <line x1="3" y1="8" x2="13" y2="8"></line>
+            <line x1="3" y1="12" x2="9" y2="12"></line>
+          </g>
+          <text x="616" y="96" font-size="12" font-weight="700" fill="var(--text-main)">SERVEUR CLOUD</text>
+          <text x="616" y="112" font-size="10">SECONDAIRE</text>
+
+          <line x1="352" y1="100" x2="568" y2="100" stroke="var(--text-dim)" stroke-width="1.4" marker-start="url(#tk-arrow)" marker-end="url(#tk-arrow)"></line>
+          <text x="460" y="90" font-size="10.5" text-anchor="middle" letter-spacing="1">SYNC ~20S</text>
+
+          <!-- field tier group -->
+          <rect x="40" y="220" width="840" height="260" rx="10" fill="none" stroke="var(--border)" stroke-dasharray="4 4"></rect>
+          <text x="52" y="212" font-size="10.5" letter-spacing="1.5" fill="var(--text-dim)">SUR SITE — SANS INTERNET</text>
+
+          <line x1="250" y1="132" x2="250" y2="260" stroke="var(--text-dim)" stroke-width="1.4" stroke-dasharray="5 5" marker-start="url(#tk-arrow)" marker-end="url(#tk-arrow)"></line>
+          <text x="264" y="188" font-size="10.5" letter-spacing="0.5">4G / INTERNET</text>
+          <text x="264" y="202" font-size="10.5" letter-spacing="0.5">SI DISPONIBLE</text>
+
+          <rect x="150" y="260" width="200" height="64" rx="6" fill="var(--bg-panel)" stroke="var(--accent)"></rect>
+          <g transform="translate(168,276)" stroke="var(--accent)" stroke-width="1.2" fill="none">
+            <line x1="8" y1="16" x2="8" y2="2"></line>
+            <path d="M4,7 Q8,3 12,7"></path>
+            <path d="M1,10 Q8,2 15,10"></path>
+            <circle cx="8" cy="2" r="1.4" fill="var(--accent)" stroke="none"></circle>
+          </g>
+          <text x="196" y="288" font-size="12" font-weight="700" fill="var(--text-main)">NŒUD TERRAIN</text>
+          <text x="196" y="304" font-size="10">WIFI LOCAL + RELAIS RADIO</text>
+
+          <g stroke="var(--accent)" stroke-width="1.4">
+            <line x1="250" y1="324" x2="110" y2="420"></line>
+            <line x1="250" y1="324" x2="250" y2="420"></line>
+            <line x1="250" y1="324" x2="390" y2="420"></line>
+            <line x1="390" y1="420" x2="560" y2="420"></line>
+          </g>
+
+          <g fill="var(--accent-dim)" stroke="var(--accent)" stroke-width="1.5">
+            <polygon points="110,411 119,420 110,429 101,420"></polygon>
+            <polygon points="250,411 259,420 250,429 241,420"></polygon>
+            <polygon points="390,411 399,420 390,429 381,420"></polygon>
+            <polygon points="560,411 569,420 560,429 551,420"></polygon>
+          </g>
+          <g fill="var(--accent)">
+            <circle cx="110" cy="420" r="2"></circle>
+            <circle cx="250" cy="420" r="2"></circle>
+            <circle cx="390" cy="420" r="2"></circle>
+            <circle cx="560" cy="420" r="2"></circle>
+          </g>
+
+          <text x="110" y="448" font-size="10" text-anchor="middle">DESKTOP</text>
+          <text x="250" y="448" font-size="10" text-anchor="middle">TABLETTE</text>
+          <text x="390" y="448" font-size="10" text-anchor="middle">RADIO SEULE</text>
+          <text x="560" y="448" font-size="10" text-anchor="middle">RADIO SEULE</text>
+
+          <text x="460" y="472" font-size="10.5" text-anchor="middle" letter-spacing="0.5" fill="var(--text-main)">MAILLAGE RADIO · 868 MHz — TOUJOURS ACTIF, SANS INTERNET</text>
+        </svg>
+        <figcaption>Les appareils terrain continuent de communiquer par radio locale même si la liaison vers le cloud tombe — chaque poste de commandement reste synchronisé, sans point de défaillance unique.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══════ SECTORS ═══════ -->
+  <section class="sectors" id="secteurs">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="sec-num">SEC.06 // SECTEURS</div>
+        <h2 class="section-title">Conçu pour le terrain</h2>
+        <p class="section-sub">TAKTYN s'adapte aux équipes qui doivent coordonner des opérations en conditions réelles.</p>
+      </div>
+      <div class="sectors-grid">
+        <div class="sector-card">Sécurité événementielle</div>
+        <div class="sector-card">Sécurité industrielle &amp; de site</div>
+        <div class="sector-card">Gestion de crise d'entreprise</div>
+        <div class="sector-card">Secours en montagne &amp; SAR</div>
+        <div class="sector-card">Coordination logistique terrain</div>
+        <div class="sector-card sector-card--muted">Pompiers, protection civile, ONG <span>bientôt</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PROCESS ═══════ -->
+  <section class="process">
+    <div class="wrap">
+      <div class="sec-num">SEC.07 // PROCESSUS</div>
+      <h2 class="section-title">Du premier contact au déploiement</h2>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Démo gratuite</h3>
+          <p>30 à 45 minutes, adaptée à votre activité — sans engagement.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Pilote terrain</h3>
+          <p>30 jours en conditions réelles avec votre équipe, déductible du contrat.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Déploiement</h3>
+          <p>Infrastructure dédiée, isolée, provisionnée pour votre organisation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PRICING ═══════ -->
+  <section class="pricing" id="tarifs">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="sec-num">SEC.08 // ACCÈS</div>
+        <h2 class="section-title">Accès bêta</h2>
+        <p class="section-sub">Programme ouvert à un nombre limité de partenaires en Suisse romande. Tarif préférentiel fixé selon la taille de l'équipe.</p>
+      </div>
+      <div class="pricing-card hud-frame">
+        <span class="hud-corner hud-tl"></span><span class="hud-corner hud-tr"></span>
+        <span class="hud-corner hud-bl"></span><span class="hud-corner hud-br"></span>
+        <div class="pricing-badge">BÊTA — PLACES LIMITÉES</div>
+        <ul class="pricing-features">
+          <li>Application complète — carte, chat chiffré, radio hors réseau</li>
+          <li>Infrastructure dédiée, hébergée en Suisse</li>
+          <li>Support direct pendant toute la durée du programme</li>
+          <li>Conditions et tarif adaptés à votre équipe, à discuter ensemble</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary btn-block">Discuter des conditions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CONTACT ═══════ -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-inner">
+      <div class="sec-num">SEC.09 // CONTACT</div>
+      <h2 class="section-title">Parlons de votre terrain</h2>
+      <p class="section-sub">Décrivez votre activité et vos contraintes de coordination — réponse sous quelques jours.</p>
+      <form class="contact-form" id="contact-form" action="mailto:mgenoud01@gmail.com" method="POST" enctype="text/plain">
+        <div class="form-row">
+          <label for="c-name">Nom</label>
+          <input id="c-name" name="Nom" type="text" required>
+        </div>
+        <div class="form-row">
+          <label for="c-org">Organisation</label>
+          <input id="c-org" name="Organisation" type="text">
+        </div>
+        <div class="form-row">
+          <label for="c-email">Email</label>
+          <input id="c-email" name="Email" type="email" required>
+        </div>
+        <div class="form-row">
+          <label for="c-msg">Votre besoin de coordination</label>
+          <textarea id="c-msg" name="Message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Envoyer la demande</button>
+        <p class="form-legal">En envoyant ce formulaire, vous acceptez notre <a href="privacy.html">politique de confidentialité</a>.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="brand footer-brand">
+      <img src="assets/taktyn_logo.svg" alt="" class="brand-mark">
+      <span class="brand-name">TAKTYN</span>
+    </div>
+    <p class="footer-tagline">COMMAND &amp; CONTROL SYSTEM</p>
+    <p class="footer-copy">© 2026 TAKTYN — Hébergé en Suisse 🇨🇭 · <a href="privacy.html">Confidentialité</a> · <a href="en/index.html">English</a></p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

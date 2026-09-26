@@ -1,0 +1,41 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer faint ring -->
+  <circle cx="256" cy="256" r="195" fill="none" stroke="#3498db" stroke-width="1" opacity="0.18"/>
+
+  <!-- Inner circle (background behind diamond) -->
+  <circle cx="256" cy="256" r="96" fill="rgba(52,152,219,0.13)" stroke="#3498db" stroke-width="1.8" opacity="0.85"/>
+
+  <!-- Crosshair — top -->
+  <line x1="256" y1="52" x2="256" y2="160" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+  <!-- Crosshair — bottom -->
+  <line x1="256" y1="352" x2="256" y2="460" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+  <!-- Crosshair — left -->
+  <line x1="52" y1="256" x2="160" y2="256" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+  <!-- Crosshair — right -->
+  <line x1="352" y1="256" x2="460" y2="256" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Tick marks at arm ends -->
+  <line x1="246" y1="52" x2="266" y2="52"  stroke="#3498db" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+  <line x1="246" y1="460" x2="266" y2="460" stroke="#3498db" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+  <line x1="52"  y1="246" x2="52"  y2="266" stroke="#3498db" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+  <line x1="460" y1="246" x2="460" y2="266" stroke="#3498db" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+
+  <!-- Central diamond -->
+  <polygon points="256,186 326,256 256,326 186,256" fill="#3498db" opacity="0.92"/>
+  <!-- Diamond inner highlight -->
+  <polygon points="256,204 308,256 256,308 204,256" fill="white" opacity="0.10"/>
+  <!-- Center dot -->
+  <circle cx="256" cy="256" r="9" fill="white" opacity="0.92"/>
+
+  <!-- Corner registration marks -->
+  <path d="M78,96 L78,70 L104,70"  fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <path d="M434,96 L434,70 L408,70" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <path d="M78,416 L78,442 L104,442" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <path d="M434,416 L434,442 L408,442" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Corner accent squares -->
+  <rect x="108" y="108" width="7" height="7" rx="1" fill="#3498db" opacity="0.45"/>
+  <rect x="397" y="108" width="7" height="7" rx="1" fill="#3498db" opacity="0.45"/>
+  <rect x="108" y="397" width="7" height="7" rx="1" fill="#3498db" opacity="0.45"/>
+  <rect x="397" y="397" width="7" height="7" rx="1" fill="#3498db" opacity="0.45"/>
+</svg>
