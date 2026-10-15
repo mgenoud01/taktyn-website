@@ -183,7 +183,7 @@ a:visited { color: inherit; }
   font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase; transition: all .18s ease;
   border: 1.5px solid transparent; cursor: pointer;
 }
-.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary, .btn-primary:visited { background: var(--ink); color: var(--paper); }
 .btn-primary:hover { filter: brightness(1.2); transform: translateY(-1px); }
 .btn-ghost { border-color: #20291f55; color: var(--ink); }
 .btn-ghost:hover { background: #20291f0d; }
