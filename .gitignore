@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Original screen recordings (compressed version is checked in as demo.mp4)
+assets/Screen Recording*.mov
+assets/Screen Recording*.mp4
+
+# Backup of source screenshots (originals before resize)
+assets/screenshots/_source/
