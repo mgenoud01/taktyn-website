@@ -6,8 +6,31 @@
 <title>TAKTYN — Real-time field coordination</title>
 <meta name="description" content="TAKTYN is a tactical command and coordination system for security and response teams: real-time map, encrypted chat, off-grid radio. Hosted in Switzerland.">
 <meta name="theme-color" content="#ece4cf">
+<link rel="canonical" href="https://taktyn.ch/en/">
+<link rel="alternate" hreflang="fr" href="https://taktyn.ch/">
+<link rel="alternate" hreflang="en" href="https://taktyn.ch/en/">
+<link rel="alternate" hreflang="x-default" href="https://taktyn.ch/">
 <link rel="icon" type="image/svg+xml" href="../assets/taktyn_logo.svg">
 <link rel="apple-touch-icon" href="../assets/icon-192.png">
+
+<!-- Open Graph (LinkedIn, Facebook, WhatsApp, Slack previews) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://taktyn.ch/en/">
+<meta property="og:title" content="TAKTYN — Real-time field coordination">
+<meta property="og:description" content="Shared tactical map, end-to-end encrypted chat, off-grid radio. Hosted in Switzerland. Keeps running even without internet.">
+<meta property="og:image" content="https://taktyn.ch/assets/demo-poster.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:image:alt" content="TAKTYN tactical map with markers, zones and team in action">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="fr_CH">
+<meta property="og:site_name" content="TAKTYN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TAKTYN — Real-time field coordination">
+<meta name="twitter:description" content="Shared tactical map, end-to-end encrypted chat, off-grid radio. Hosted in Switzerland.">
+<meta name="twitter:image" content="https://taktyn.ch/assets/demo-poster.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,900;1,600&family=JetBrains+Mono:wght@500;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
@@ -75,7 +98,7 @@
     <div class="elev-marker" style="left: 70%; top: 78%; animation-delay: 1600ms;" aria-hidden="true">× 1069m</div>
 
     <figure class="hero-photo">
-      <img src="../assets/screenshots/02-carte-tactique.png" alt="TAKTYN tactical map with markers, an incident zone and the MAYDAY button">
+      <img src="../assets/screenshots/02-carte-tactique.png" fetchpriority="high" decoding="async" alt="TAKTYN tactical map with markers, an incident zone and the MAYDAY button">
       <figcaption>Tactical map — real app</figcaption>
     </figure>
 
@@ -182,7 +205,7 @@
 
     <div class="gallery-row">
       <figure class="gallery-video">
-        <video controls preload="metadata" poster="../assets/demo-poster.jpg" playsinline>
+        <video controls preload="none" poster="../assets/demo-poster.jpg" playsinline>
           <source src="../assets/demo.mp4" type="video/mp4">
           Your browser does not support video playback.
         </video>
@@ -190,31 +213,31 @@
       </figure>
       <div class="gallery-photos">
         <figure class="gallery-photo">
-          <img src="../assets/screenshots/05-chat.png" alt="TAKTYN chat panel with a broadcast message and urgent button">
+          <img src="../assets/screenshots/05-chat.png" loading="lazy" decoding="async" alt="TAKTYN chat panel with a broadcast message and urgent button">
           <figcaption>Chat &amp; alerts</figcaption>
         </figure>
         <figure class="gallery-photo">
-          <img src="../assets/screenshots/03-marqueur-actions.png" alt="Marker detail panel with Edit, Status, Photo, Tasks, History actions">
+          <img src="../assets/screenshots/03-marqueur-actions.png" loading="lazy" decoding="async" alt="Marker detail panel with Edit, Status, Photo, Tasks, History actions">
           <figcaption>Tracking a point</figcaption>
         </figure>
         <figure class="gallery-photo">
-          <img src="../assets/screenshots/04-statut-marqueur.png" alt="Marker status picker">
+          <img src="../assets/screenshots/04-statut-marqueur.png" loading="lazy" decoding="async" alt="Marker status picker">
           <figcaption>Live status</figcaption>
         </figure>
         <figure class="gallery-photo">
-          <img src="../assets/screenshots/01-login.png" alt="TAKTYN login screen — Command & Control System">
+          <img src="../assets/screenshots/01-login.png" loading="lazy" decoding="async" alt="TAKTYN login screen — Command & Control System">
           <figcaption>Login</figcaption>
         </figure>
         <figure class="gallery-photo">
-          <img src="../assets/screenshots/06-mil-symbols.png" alt="MIL-STD 2525 military symbol picker — units, equipment, installations">
+          <img src="../assets/screenshots/06-mil-symbols.png" loading="lazy" decoding="async" alt="MIL-STD 2525 military symbol picker — units, equipment, installations">
           <figcaption>MIL-STD symbols</figcaption>
         </figure>
         <figure class="gallery-photo">
-          <img src="../assets/screenshots/07-user-menu.png" alt="TAKTYN user menu with Mission PIN entry and armed indicator">
+          <img src="../assets/screenshots/07-user-menu.png" loading="lazy" decoding="async" alt="TAKTYN user menu with Mission PIN entry and armed indicator">
           <figcaption>Operator menu</figcaption>
         </figure>
         <figure class="gallery-photo">
-          <img src="../assets/screenshots/08-admin.png" alt="TAKTYN admin panel — user management, tickets and mission PIN">
+          <img src="../assets/screenshots/08-admin.png" loading="lazy" decoding="async" alt="TAKTYN admin panel — user management, tickets and mission PIN">
           <figcaption>Administration</figcaption>
         </figure>
       </div>
@@ -254,7 +277,7 @@
     <div class="stats-grid">
       <div class="stat"><span class="stat-num">9</span><span class="stat-lbl">security layers</span></div>
       <div class="stat"><span class="stat-num">&lt;30s</span><span class="stat-lbl">failover to degraded mode</span></div>
-      <div class="stat"><span class="stat-num">868</span><span class="stat-lbl">MHz LoRa radio</span></div>
+      <div class="stat"><span class="stat-num">7d</span><span class="stat-lbl">offline PIN login</span></div>
       <div class="stat"><span class="stat-num">100%</span><span class="stat-lbl">Swiss infrastructure</span></div>
     </div>
   </section>
