@@ -145,14 +145,21 @@
 
     <div class="manifest">
       <div class="m-row reveal-row"><div class="m-tag">MAP</div><div class="m-title">Real-time tactical map</div><div class="m-desc">Markers, zones and GPS positions shared instantly across every connected operator.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">MIL</div><div class="m-title">Military-standard symbology</div><div class="m-desc">Full MIL-STD 2525 library — units, equipment, installations. Recognizable to any NATO-trained operator.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">E2E</div><div class="m-title">End-to-end encrypted chat</div><div class="m-desc">AES-256-GCM on the client side. Neither the server nor a third party can read messages.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">RF</div><div class="m-title">Off-grid radio</div><div class="m-desc">LoRa Meshtastic at 868 MHz — coordination continues without 4G or internet.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">FBK</div><div class="m-title">Automatic failover</div><div class="m-desc">Network loss detected within 30 seconds. Automatic switch to radio and local cache.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">PIN</div><div class="m-title">Offline PIN mission login</div><div class="m-desc">The operator reopens their session even without 4G: a local PIN decrypts the mission token and the session resumes on radio only. Remotely revocable by the admin.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">2FA</div><div class="m-title">Two-factor authentication</div><div class="m-desc">TOTP (Google Authenticator, 1Password) and hardware security keys (YubiKey, WebAuthn). Printable backup codes for the field.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">SOS</div><div class="m-title">MAYDAY alert</div><div class="m-desc">One button to trigger a priority alert, visible to the whole team.</div></div>
-      <div class="m-row reveal-row"><div class="m-tag">OS</div><div class="m-title">Cross-platform</div><div class="m-desc">Desktop (Mac / Windows / Linux) and a web client optimized for phones, tablets, browsers.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">GEO</div><div class="m-title">Zone alerts (geofence)</div><div class="m-desc">Draw a zone, get an alert the moment a team member enters or leaves. Works over radio-only too.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">PSH</div><div class="m-title">Native Android notifications</div><div class="m-desc">MAYDAY, direct messages and @mentions land in the Android system tray even with the screen off, through the dedicated Capacitor shell.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">OS</div><div class="m-title">Cross-platform</div><div class="m-desc">Desktop (Mac / Windows / Linux), browser-optimized web client, and a native Android app with a background radio service.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">STA</div><div class="m-title">Live status</div><div class="m-desc">Clear, active, danger, secured, evacuated, blocked — updated in one click.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">VOX</div><div class="m-title">Encrypted voice messages</div><div class="m-desc">Available over 4G/5G. Text still gets through even over off-grid radio.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">LOG</div><div class="m-title">Logistics tracking</div><div class="m-desc">Fully customizable per-unit inventory — custom quotas and alert thresholds, consolidated view, resupply requests.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">RPT</div><div class="m-title">Standard reports</div><div class="m-desc">Pre-filled military templates — SITREP, 9-liner MEDEVAC, patrol, observation. Electronic signature and PDF export.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">QR</div><div class="m-title">QR ticket onboarding</div><div class="m-desc">The admin issues a welcome ticket, the operator scans the QR, logs in, picks a password. Zero friction, zero email.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">LYR</div><div class="m-title">Planning layers</div><div class="m-desc">Draft a plan on a separate layer, delegable, activated without touching the live operation.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">ISO</div><div class="m-title">Isolation &amp; multi-node continuity</div><div class="m-desc">A separate space per mission, never shared. Failover between posts in under 30 seconds.</div></div>
     </div>
@@ -201,10 +208,12 @@
       <div class="security-text reveal">
         <div class="sec-num">SEC.04 // SECURITY</div>
         <h2 class="section-title">Security by design.</h2>
-        <p class="section-sub">Seven layers of protection, from the radio to message encryption.</p>
+        <p class="section-sub">Nine layers of protection, from the radio to message encryption.</p>
         <ul class="security-list">
           <li><strong>Network</strong> — proxy/CDN, HTTPS TLS 1.3</li>
-          <li><strong>Authentication</strong> — brute-force lockout</li>
+          <li><strong>Authentication</strong> — strong password + brute-force lockout</li>
+          <li><strong>Two-factor</strong> — TOTP and hardware keys (YubiKey, WebAuthn)</li>
+          <li><strong>Offline login</strong> — mission token sealed by a local PIN, remotely revocable</li>
           <li><strong>Transport</strong> — AES-256 encryption in real time</li>
           <li><strong>Storage</strong> — encrypted database SQLCipher AES-256</li>
           <li><strong>Radio</strong> — AES-256-CTR, Meshtastic firmware</li>
@@ -224,7 +233,7 @@
   <!-- ═══════ STATS ═══════ -->
   <section class="stats reveal">
     <div class="stats-grid">
-      <div class="stat"><span class="stat-num">7</span><span class="stat-lbl">encryption layers</span></div>
+      <div class="stat"><span class="stat-num">9</span><span class="stat-lbl">security layers</span></div>
       <div class="stat"><span class="stat-num">&lt;30s</span><span class="stat-lbl">failover to degraded mode</span></div>
       <div class="stat"><span class="stat-num">868</span><span class="stat-lbl">MHz LoRa radio</span></div>
       <div class="stat"><span class="stat-num">100%</span><span class="stat-lbl">Swiss infrastructure</span></div>

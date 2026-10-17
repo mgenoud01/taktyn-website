@@ -145,14 +145,21 @@
 
     <div class="manifest">
       <div class="m-row reveal-row"><div class="m-tag">MAP</div><div class="m-title">Carte tactique temps réel</div><div class="m-desc">Marqueurs, zones et positions GPS partagés instantanément entre tous les opérateurs connectés.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">MIL</div><div class="m-title">Symbologie militaire standard</div><div class="m-desc">Bibliothèque MIL-STD 2525 complète — unités, équipements, installations. Reconnaissable par tout opérateur formé OTAN.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">E2E</div><div class="m-title">Chat chiffré de bout en bout</div><div class="m-desc">AES-256-GCM côté client. Ni le serveur ni un tiers ne peut lire les messages.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">RF</div><div class="m-title">Radio hors réseau</div><div class="m-desc">LoRa Meshtastic 868 MHz — la coordination continue sans 4G ni internet.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">FBK</div><div class="m-title">Mode dégradé automatique</div><div class="m-desc">Coupure détectée en 30 secondes. Bascule automatique vers la radio et le cache local.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">PIN</div><div class="m-title">Login hors-ligne par PIN mission</div><div class="m-desc">L'opérateur rouvre sa session même sans 4G : le PIN local déchiffre le jeton de mission, la session reprend sur radio seule. Révocable à distance par l'admin.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">2FA</div><div class="m-title">Double authentification</div><div class="m-desc">TOTP (Google Authenticator, 1Password) et clés de sécurité physiques (YubiKey, WebAuthn). Codes de secours imprimables pour le terrain.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">SOS</div><div class="m-title">Alerte MAYDAY</div><div class="m-desc">Un bouton pour déclencher une alerte prioritaire visible par toute l'équipe.</div></div>
-      <div class="m-row reveal-row"><div class="m-tag">OS</div><div class="m-title">Multi-plateforme</div><div class="m-desc">Desktop (Mac / Windows / Linux) et client web optimisé smartphone, tablette, navigateur.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">GEO</div><div class="m-title">Alertes de zone (geofence)</div><div class="m-desc">Dessinez une zone, recevez une alerte dès qu'un équipier y entre ou en sort. Fonctionne aussi par radio seule.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">PSH</div><div class="m-title">Notifications natives Android</div><div class="m-desc">MAYDAY, messages directs, @mentions arrivent dans la barre système Android même écran éteint, grâce à la coque Capacitor dédiée.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">OS</div><div class="m-title">Multi-plateforme</div><div class="m-desc">Desktop (Mac / Windows / Linux), client web optimisé navigateur, et application Android native avec service radio en arrière-plan.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">STA</div><div class="m-title">Statut en direct</div><div class="m-desc">Libre, actif, danger, sécurisé, évacué, bloqué — mis à jour en un clic.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">VOX</div><div class="m-title">Messages vocaux chiffrés</div><div class="m-desc">Disponible en 4G/5G. Le texte, lui, passe même par radio hors réseau.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">LOG</div><div class="m-title">Suivi logistique</div><div class="m-desc">Inventaire personnalisable par unité — quotas et seuils d'alerte sur mesure, vue consolidée, demandes de ravitaillement.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">RPT</div><div class="m-title">Rapports standardisés</div><div class="m-desc">Modèles militaires pré-remplis — SITREP, 9-liner MEDEVAC, patrouille, observation. Signature électronique et export PDF.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">QR</div><div class="m-title">Onboarding par ticket QR</div><div class="m-desc">L'admin émet un ticket d'arrivée, l'opérateur scanne le QR, se logge, choisit son mot de passe. Zéro friction, zéro email.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">LYR</div><div class="m-title">Calques de planification</div><div class="m-desc">Préparez un plan à part, délégable, activable sans toucher l'opération en cours.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">ISO</div><div class="m-title">Isolation &amp; continuité multi-postes</div><div class="m-desc">Un espace par mission, jamais partagé. Bascule entre postes en moins de 30 secondes.</div></div>
     </div>
@@ -201,10 +208,12 @@
       <div class="security-text reveal">
         <div class="sec-num">SEC.04 // SÉCURITÉ</div>
         <h2 class="section-title">Sécurité par conception.</h2>
-        <p class="section-sub">Sept couches de protection, de la radio au chiffrement des messages.</p>
+        <p class="section-sub">Neuf couches de protection, de la radio au chiffrement des messages.</p>
         <ul class="security-list">
           <li><strong>Réseau</strong> — proxy/CDN, HTTPS TLS 1.3</li>
-          <li><strong>Authentification</strong> — verrouillage anti-bruteforce</li>
+          <li><strong>Authentification</strong> — mot de passe fort + verrouillage anti-bruteforce</li>
+          <li><strong>Double facteur</strong> — TOTP et clés physiques (YubiKey, WebAuthn)</li>
+          <li><strong>Login hors-ligne</strong> — jeton de mission chiffré par PIN local, révocable à distance</li>
           <li><strong>Transport</strong> — chiffrement AES-256 temps réel</li>
           <li><strong>Stockage</strong> — base chiffrée SQLCipher AES-256</li>
           <li><strong>Radio</strong> — AES-256-CTR, firmware Meshtastic</li>
@@ -224,7 +233,7 @@
   <!-- ═══════ STATS ═══════ -->
   <section class="stats reveal">
     <div class="stats-grid">
-      <div class="stat"><span class="stat-num">7</span><span class="stat-lbl">couches de chiffrement</span></div>
+      <div class="stat"><span class="stat-num">9</span><span class="stat-lbl">couches de sécurité</span></div>
       <div class="stat"><span class="stat-num">&lt;30s</span><span class="stat-lbl">bascule dégradée</span></div>
       <div class="stat"><span class="stat-num">868</span><span class="stat-lbl">MHz radio LoRa</span></div>
       <div class="stat"><span class="stat-num">100%</span><span class="stat-lbl">infrastructure suisse</span></div>
