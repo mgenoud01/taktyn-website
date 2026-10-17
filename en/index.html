@@ -144,23 +144,30 @@
     </div>
 
     <div class="manifest">
+      <div class="m-group-title reveal-row">ON THE GROUND</div>
       <div class="m-row reveal-row"><div class="m-tag">MAP</div><div class="m-title">Real-time tactical map</div><div class="m-desc">Markers, zones and GPS positions shared instantly across every connected operator.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">MIL</div><div class="m-title">Military-standard symbology</div><div class="m-desc">Full MIL-STD 2525 library — units, equipment, installations. Recognizable to any NATO-trained operator.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">STA</div><div class="m-title">Live status</div><div class="m-desc">Clear, active, danger, secured, evacuated, blocked — updated in one click.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">GEO</div><div class="m-title">Zone alerts (geofence)</div><div class="m-desc">Draw a zone, get an alert the moment a team member enters or leaves. Works over radio-only too.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">LYR</div><div class="m-title">Planning layers</div><div class="m-desc">Draft a plan on a separate layer, delegable, activated without touching the live operation.</div></div>
+
+      <div class="m-group-title reveal-row">COMMUNICATE</div>
       <div class="m-row reveal-row"><div class="m-tag">E2E</div><div class="m-title">End-to-end encrypted chat</div><div class="m-desc">AES-256-GCM on the client side. Neither the server nor a third party can read messages.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">VOX</div><div class="m-title">Encrypted voice messages</div><div class="m-desc">Available over 4G/5G. Text still gets through even over off-grid radio.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">SOS</div><div class="m-title">MAYDAY alert</div><div class="m-desc">One button to trigger a priority alert, visible to the whole team.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">PSH</div><div class="m-title">Native Android notifications</div><div class="m-desc">MAYDAY, direct messages and @mentions land in the Android system tray even with the screen off, through the dedicated Capacitor shell.</div></div>
+
+      <div class="m-group-title reveal-row">RESILIENCE</div>
       <div class="m-row reveal-row"><div class="m-tag">RF</div><div class="m-title">Off-grid radio</div><div class="m-desc">LoRa Meshtastic at 868 MHz — coordination continues without 4G or internet.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">FBK</div><div class="m-title">Automatic failover</div><div class="m-desc">Network loss detected within 30 seconds. Automatic switch to radio and local cache.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">PIN</div><div class="m-title">Offline PIN mission login</div><div class="m-desc">The operator reopens their session even without 4G: a local PIN decrypts the mission token and the session resumes on radio only. Remotely revocable by the admin.</div></div>
-      <div class="m-row reveal-row"><div class="m-tag">2FA</div><div class="m-title">Two-factor authentication</div><div class="m-desc">TOTP (Google Authenticator, 1Password) and hardware security keys (YubiKey, WebAuthn). Printable backup codes for the field.</div></div>
-      <div class="m-row reveal-row"><div class="m-tag">SOS</div><div class="m-title">MAYDAY alert</div><div class="m-desc">One button to trigger a priority alert, visible to the whole team.</div></div>
-      <div class="m-row reveal-row"><div class="m-tag">GEO</div><div class="m-title">Zone alerts (geofence)</div><div class="m-desc">Draw a zone, get an alert the moment a team member enters or leaves. Works over radio-only too.</div></div>
-      <div class="m-row reveal-row"><div class="m-tag">PSH</div><div class="m-title">Native Android notifications</div><div class="m-desc">MAYDAY, direct messages and @mentions land in the Android system tray even with the screen off, through the dedicated Capacitor shell.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">OS</div><div class="m-title">Cross-platform</div><div class="m-desc">Desktop (Mac / Windows / Linux), browser-optimized web client, and a native Android app with a background radio service.</div></div>
-      <div class="m-row reveal-row"><div class="m-tag">STA</div><div class="m-title">Live status</div><div class="m-desc">Clear, active, danger, secured, evacuated, blocked — updated in one click.</div></div>
-      <div class="m-row reveal-row"><div class="m-tag">VOX</div><div class="m-title">Encrypted voice messages</div><div class="m-desc">Available over 4G/5G. Text still gets through even over off-grid radio.</div></div>
+
+      <div class="m-group-title reveal-row">COMMAND</div>
+      <div class="m-row reveal-row"><div class="m-tag">2FA</div><div class="m-title">Two-factor authentication</div><div class="m-desc">TOTP (Google Authenticator, 1Password) and hardware security keys (YubiKey, WebAuthn). Printable backup codes for the field.</div></div>
+      <div class="m-row reveal-row"><div class="m-tag">QR</div><div class="m-title">QR ticket onboarding</div><div class="m-desc">The admin issues a welcome ticket, the operator scans the QR, logs in, picks a password. Zero friction, zero email.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">LOG</div><div class="m-title">Logistics tracking</div><div class="m-desc">Fully customizable per-unit inventory — custom quotas and alert thresholds, consolidated view, resupply requests.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">RPT</div><div class="m-title">Standard reports</div><div class="m-desc">Pre-filled military templates — SITREP, 9-liner MEDEVAC, patrol, observation. Electronic signature and PDF export.</div></div>
-      <div class="m-row reveal-row"><div class="m-tag">QR</div><div class="m-title">QR ticket onboarding</div><div class="m-desc">The admin issues a welcome ticket, the operator scans the QR, logs in, picks a password. Zero friction, zero email.</div></div>
-      <div class="m-row reveal-row"><div class="m-tag">LYR</div><div class="m-title">Planning layers</div><div class="m-desc">Draft a plan on a separate layer, delegable, activated without touching the live operation.</div></div>
       <div class="m-row reveal-row"><div class="m-tag">ISO</div><div class="m-title">Isolation &amp; multi-node continuity</div><div class="m-desc">A separate space per mission, never shared. Failover between posts in under 30 seconds.</div></div>
     </div>
   </section>

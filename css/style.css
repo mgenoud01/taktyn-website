@@ -233,6 +233,35 @@ a:visited { color: inherit; }
 .manifest { border-top: 1.5px solid var(--ink); }
 .m-row { display: flex; align-items: baseline; gap: 24px; padding: 20px 0; border-bottom: 1px dashed var(--line); }
 .m-row:last-child { border-bottom: none; }
+/* Section divider inside the manifest — groups the 18 rows into four
+   thematic blocks (ON THE GROUND / COMMUNICATE / RESILIENCE / COMMAND)
+   so the list scans faster. Mono eyebrow with a leading rule, same ink
+   colour as the m-tag frame; mirrors the SEC.XX labels used elsewhere. */
+.m-group-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--ink);
+  padding: 34px 0 10px;
+  margin-top: 6px;
+  border-bottom: 1px solid var(--ink);
+  display: flex; align-items: center; gap: 14px;
+}
+.m-group-title::before {
+  content: "";
+  display: inline-block;
+  width: 24px; height: 1.5px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.m-group-title:first-child {
+  padding-top: 18px;
+  margin-top: 0;
+}
+/* First row inside a group has no top-of-list visual gap — the divider
+   already provides the separation. */
+.m-group-title + .m-row { border-top: none; }
 .m-tag {
   font-family: var(--mono); font-size: 11px; font-weight: 700; border: 1px solid var(--ink);
   padding: 4px 9px; min-width: 42px; text-align: center; transition: all .2s; flex-shrink: 0;
